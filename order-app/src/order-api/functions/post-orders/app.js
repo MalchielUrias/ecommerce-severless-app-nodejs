@@ -30,10 +30,10 @@ exports.postOrders = async (event) => {
     let parsedBody = JSON.parse(body);    
     
     let item = {
-      user_id : "static_user", 
-      id: messageId, 
-      name: parsedBody.data.name, 
-      restaurantId: parsedBody.data.restaurantId, 
+      user_id: parsedBody.cognito_userid, // UserID from cognito
+      id: messageId,
+      name: parsedBody.data.name,
+      restaurantId: parsedBody.data.restaurantId,
       createdAt: formattedDateNow.toString(),
       quantity: parsedBody.data.quantity,
       orderStatus: DEFAULT_ORDER_STATUS,
